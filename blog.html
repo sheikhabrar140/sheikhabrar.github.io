@@ -3,19 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olympiads | Sheikh Abrar</title>
-
+  <title>Blog | Sheikh Abrar</title>
  <link rel="icon" type="image/png" href="https://i.postimg.cc/XYyYDGKX/telescope-icon-design-template-in-white-background-vector.jpg">
-
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
+  <!-- Fonts used ONLY by the essay card below (literary serif pairing) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 
+  <style>
+    /* ==========================================================
+       BLOG · FEATURED ESSAY  — "Mast Qalandar"
+       A deliberately different look from the rest of the site:
+       an illuminated parchment "page" floating on the starfield.
+       Accent = madder red, for *Lal* Shahbaz Qalandar (lal = red).
+       All classes are namespaced .mq- so nothing in styles.css
+       is touched or overridden.
+    ========================================================== */
 
+    .mq-feature {
+      max-width: 900px !important;
+      margin: 10px auto 40px auto !important;
+      padding: 0 22px !important;
+    }
+
+    .mq-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #b59b6d;
+      opacity: 0.85;
+      margin: 0 auto 26px auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 820px;
+    }
+    .mq-eyebrow::before,
+    .mq-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(154,124,73,0.45), transparent);
+    }
+
+    /* ---- The parchment page ---- */
+    .mq-page {
+      --mq-paper: #f3ead7;
+      --mq-paper-edge: #e7dabf;
+      --mq-ink: #2a2017;
+      --mq-body: #4c3e30;
+      --mq-lal: #9d2f26;      /* madder red */
+      --mq-saffron: #c07a34;  /* shrine ochre */
+      --mq-gold: #b59b6d;
+
+      max-width: 820px;
+      margin: 0 auto;
+      background:
+        radial-gradient(130% 90% at 50% 0%, #f8f1e2 0%, var(--mq-paper) 52%, var(--mq-paper-edge) 100%);
+      border: 1px solid rgba(154,124,73,0.4);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow:
+        0 45px 95px rgba(0,0,0,0.62),
+        0 0 70px rgba(192,122,52,0.09),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    /* thin saffron/lal rule running along the very top */
+    .mq-page::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--mq-lal), var(--mq-saffron), var(--mq-gold));
+    }
+
+    /* ---- Header ---- */
+    .mq-head {
+      padding: 40px 56px 26px 56px;
+    }
+
+    .mq-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mq-lal);
+      margin-bottom: 18px;
+    }
+
+    .mq-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2.05rem, 5vw, 3.35rem);
+      line-height: 1.06;
+      letter-spacing: -0.5px;
+      color: var(--mq-ink);
+      margin: 0 0 16px 0;
+    }
+    .mq-title em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--mq-lal);
+    }
+
+    .mq-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: #8a7658;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .mq-meta .mq-sep { opacity: 0.5; }
+    .mq-meta .mq-chip {
+      border: 1px solid rgba(157,47,38,0.35);
+      color: var(--mq-lal);
+      padding: 3px 11px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---- Hero image (from the Medium article) ---- */
+    .mq-figure {
+      margin: 8px 0 0 0;
+      position: relative;
+    }
+    .mq-figure img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.14) contrast(1.02) saturate(1.03);
+    }
+    .mq-figure figcaption {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: #8a7658;
+      text-align: center;
+      padding: 12px 56px 0 56px;
+      font-style: italic;
+    }
+
+    /* ---- Body ---- */
+    .mq-body {
+      padding: 30px 56px 46px 56px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.78;
+      color: var(--mq-body);
+    }
+    .mq-body p { margin: 0 0 22px 0; }
+    .mq-body em { font-style: italic; color: var(--mq-ink); }
+
+    /* illuminated drop cap */
+    .mq-dropcap {
+      float: left;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 4.7rem;
+      line-height: 0.72;
+      color: var(--mq-lal);
+      padding: 10px 14px 0 0;
+    }
+
+    /* pull quote */
+    .mq-pull {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.4;
+      color: var(--mq-lal);
+      margin: 34px 0 !important;
+      padding-left: 24px;
+      border-left: 3px solid var(--mq-saffron);
+    }
+
+    /* the transliterated refrain, set as devotional verse */
+    .mq-refrain {
+      text-align: center;
+      max-width: 540px;
+      margin: 40px auto !important;
+      padding: 24px 20px;
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.85;
+      color: var(--mq-ink);
+      border-top: 1px solid rgba(192,122,52,0.4);
+      border-bottom: 1px solid rgba(192,122,52,0.4);
+      position: relative;
+    }
+    .mq-refrain::before {
+      content: '\2726';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--mq-paper);
+      color: var(--mq-saffron);
+      font-size: 0.85rem;
+      padding: 0 10px;
+    }
+    .mq-refrain small {
+      display: block;
+      margin-top: 12px;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+      color: #8a7658;
+    }
+
+    /* closing line */
+    .mq-closing {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.7rem;
+      line-height: 1.32;
+      color: var(--mq-ink);
+      max-width: 520px;
+      margin: 42px auto 0 auto !important;
+    }
+
+    /* ---- Read on Medium ---- */
+    .mq-readmore {
+      border-top: 1px solid rgba(154,124,73,0.28);
+      padding: 30px 56px 40px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .mq-readmore-label {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #6f5c44;
+    }
+    .mq-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--mq-lal);
+      color: #f6efe1;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border-radius: 3px;   /* sharp, editorial - unlike the site's pills */
+      transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 8px 22px rgba(157,47,38,0.28);
+    }
+    .mq-more-btn:hover {
+      background: #83271f;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(157,47,38,0.4);
+    }
+    .mq-more-btn .mq-arrow { transition: transform 0.35s ease; }
+    .mq-more-btn:hover .mq-arrow { transform: translateX(5px); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 720px) {
+      .mq-head { padding: 32px 26px 20px 26px; }
+      .mq-figure img { height: 260px; }
+      .mq-figure figcaption { padding: 12px 26px 0 26px; }
+      .mq-body { padding: 26px 26px 36px 26px; font-size: 1.12rem; }
+      .mq-dropcap { font-size: 3.9rem; }
+      .mq-pull { font-size: 1.28rem; }
+      .mq-refrain { font-size: 1.2rem; }
+      .mq-closing { font-size: 1.4rem; }
+      .mq-readmore { padding: 26px 26px 34px 26px; }
+      .mq-more-btn { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mq-more-btn, .mq-more-btn .mq-arrow { transition: none; }
+    }
+  </style>
 </head>
 <body>
 <canvas id="cosmos-engine"></canvas>
@@ -23,7 +302,6 @@
   <div class="aurora-wrap">
     <div class="aurora-wave"></div>
   </div>
-
 <nav class="navbar">
 <ul class="nav-list">
 <li><a href="index.html" class="nav-link">HOME</a></li>
@@ -36,18 +314,104 @@
 <li><a href="contact.html" class="nav-link">CONTACT</a></li>
 </ul>
 </nav>
-
-
 <main style="padding-top: 100px;"> 
-
 <section class="academic-hero active">
       <h1 class="hero-title">Blog</h1>
       <div class="hero-underline"></div>
       <p class="hero-subtitle">
         Thoughts, stories, and ideas about the World around me.
       </p>
+</section>
+
+
+<!-- ================= FEATURED ESSAY ================= -->
+<section class="mq-feature active">
+
+  <div class="mq-eyebrow">Featured Essay</div>
+
+  <article class="mq-page">
+
+    <!-- Header -->
+    <header class="mq-head">
+      <div class="mq-kicker">Music &nbsp;&middot;&nbsp; Sufi Qawwali</div>
+      <h2 class="mq-title">The Spiritual Madness of <em>Mast Qalandar</em></h2>
+      <div class="mq-meta">
+        <span>15 June 2026</span>
+        <span class="mq-sep">&middot;</span>
+        <span>4 min read</span>
+        <span class="mq-sep">&middot;</span>
+        <span class="mq-chip">Music</span>
+        <span class="mq-chip">Culture</span>
+      </div>
+    </header>
+
+    <!-- Hero image from the Medium article -->
+    <figure class="mq-figure">
+      <img src="https://miro.medium.com/v2/resize:fit:686/1*wNaDGBlEFPxy_40a53nwDA.jpeg"
+           alt="Sami Yusuf and Atif Aslam performing Mast Qalandar at the Etihad Arena">
+      <figcaption>Sami Yusuf &amp; Atif Aslam &mdash; a once-in-a-lifetime night at the Etihad Arena, Abu Dhabi.</figcaption>
+    </figure>
+
+    <!-- Body: the most captivating passages -->
+    <div class="mq-body">
+
+      <p>
+        <span class="mq-dropcap">I</span>n November 2025, the Etihad Arena hosted a rare collaboration
+        between two musical legends &mdash; Sami Yusuf, a British composer known for his work in world music,
+        and Atif Aslam, a Pakistani singer with a magical voice. Two artists from different musical
+        traditions came together for a once-in-a-lifetime spiritual night that takes the listener back
+        to the mystical, almost intoxicated rapture of Sufi devotion.
+      </p>
+
+      <p class="mq-pull">
+        Older than the arena that held it, older even than the countries that sing it today,
+        <em>Mast Qalandar</em> has carried listeners to that edge for centuries. And only
+        <em>Mast Qalandar</em> could bring that spiritual madness.
+      </p>
+
+      <p>
+        A qawwali from the Sufi tradition of the subcontinent, it praises the wandering saint
+        Lal Shahbaz Qalandar of Sindh and voices devotion for Ali ibn Abi Talib. What sounds on the
+        surface like one ecstatic, repeated refrain holds a whole world beneath it: of saints and seekers,
+        of love and longing, of devotion passed from voice to voice.
+      </p>
+
+      <div class="mq-refrain">
+        Dam mast Qalandar mast mast<br>
+        Dam mast Qalandar mast mast
+        <small>&ldquo;With every breath &mdash; intoxicated with the ecstatic love of the Qalandar.&rdquo;</small>
+      </div>
+
+      <p>
+        To follow its words closely is to step into that world. To sing <em>Mast Qalandar</em> is to
+        chant a holy name until the self loosens, to make every breath an act of devotion, to lose
+        oneself and call that loss a kind of freedom. When Sami Yusuf and Atif Aslam sang it that night
+        in Abu Dhabi, before a crowd separated by language, country, and centuries from the Sindhi shrine
+        the song belongs to, they were not performing a relic &mdash; they were surrendering, breath by breath,
+        to an ecstasy that belongs to everyone and to no one.
+      </p>
+
+      <p class="mq-closing">
+        It does not ask to be understood.<br>It asks to be felt.
+      </p>
+
+    </div>
+
+    <!-- Read on Medium -->
+    <div class="mq-readmore">
+      <span class="mq-readmore-label">The full essay reads the qawwali line by line.</span>
+      <a class="mq-more-btn"
+         href="https://medium.com/@abraralvi140/the-spiritual-madness-of-mast-qalandar-6e037a32e67d"
+         target="_blank" rel="noopener">
+        Continue on Medium <span class="mq-arrow">&rarr;</span>
+      </a>
+    </div>
+
+  </article>
 
 </section>
+
+
 </main>
 <script src="script.js"></script>
 </body>
