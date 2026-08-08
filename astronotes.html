@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olympiads | Sheikh Abrar</title>
+  <title>Notes | Sheikh Abrar</title>
 
  <link rel="icon" type="image/png" href="https://i.postimg.cc/XYyYDGKX/telescope-icon-design-template-in-white-background-vector.jpg">
 
@@ -15,6 +15,191 @@
   
   <link rel="stylesheet" href="styles.css">
 
+  <!-- ==========================================================
+       SERIES PANEL — scoped .mas- classes only.
+       Nothing in styles.css is touched or overridden.
+       Palette borrowed directly from the site's antique-gold set.
+     ========================================================== -->
+  <style>
+    .mas-series {
+      position: relative;
+      margin-top: 2.6rem;
+      padding: 1.9rem 1.9rem 2rem 1.9rem;
+      border: 1px solid rgba(154, 124, 73, 0.28);
+      border-radius: 20px;
+      background: rgba(25, 22, 18, 0.45);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    /* thin gold rule running along the very top of the panel */
+    .mas-series::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(181, 155, 109, 0.75), transparent);
+    }
+
+    .mas-series:hover {
+      border-color: rgba(181, 155, 109, 0.45);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45), 0 0 25px rgba(181, 155, 109, 0.06);
+    }
+
+    /* ---- Panel header ---- */
+    .mas-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 1.3rem;
+      margin-bottom: 1.7rem;
+      border-bottom: 1px solid rgba(154, 124, 73, 0.18);
+    }
+
+    .mas-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #b59b6d;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .mas-title {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 10px 0;
+      line-height: 1.25;
+    }
+
+    .mas-sub {
+      font-size: 0.93rem;
+      line-height: 1.65;
+      color: #cbd5e1;
+      opacity: 0.85;
+      margin: 0;
+      max-width: 660px;
+    }
+
+    .mas-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 7px 15px;
+      border-radius: 8px;
+      background: rgba(154, 124, 73, 0.1);
+      border: 1px solid rgba(154, 124, 73, 0.25);
+      color: #b59b6d;
+      white-space: nowrap;
+    }
+
+    /* ---- Parts laid out side by side ---- */
+    .mas-body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem;
+      align-items: stretch;
+    }
+
+    .mas-note {
+      display: flex;
+      flex-direction: column;
+      padding: 1.8rem 1.6rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .mas-note:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(181, 155, 109, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* the part marker — the notes really are a sequence, so it carries information */
+    .mas-part {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #b59b6d;
+      background: rgba(181, 155, 109, 0.1);
+      border: 1px solid rgba(181, 155, 109, 0.3);
+      box-shadow: 0 0 15px rgba(181, 155, 109, 0.15);
+      margin-bottom: 1.1rem;
+    }
+
+    .mas-note h3 {
+      margin: 0 0 0.8rem 0;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    /* handout subtitle, sits above the blurb */
+    .mas-note p em {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #b59b6d;
+      opacity: 1;
+      margin-bottom: 0.55rem;
+    }
+
+    .mas-note p {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      line-height: 1.65;
+      margin: 0 0 1.6rem 0;
+      flex-grow: 1;
+    }
+
+    /* pins every button to the bottom edge so the three line up */
+    .mas-note .btn-read {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: auto !important;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1000px) {
+      .mas-body { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 850px) {
+      .mas-series { padding: 1.4rem 1.1rem 1.6rem 1.1rem; }
+      .mas-title { font-size: 1.35rem; }
+    }
+
+    @media (max-width: 700px) {
+      .mas-body { grid-template-columns: 1fr; }
+      .mas-note { padding: 1.5rem 1.3rem; }
+      .mas-note p { margin-bottom: 1.3rem; }
+    }
+  </style>
 
 </head>
 <body>
@@ -99,17 +284,8 @@
 
     </div>
 
-    
 
-  </div>
-
-
-
-    <!-- You can duplicate more note cards here -->
-
-
-
-<!-- NOTE 2 -->
+    <!-- NOTE 2 -->
     <div class="note-row" style="
         display: flex;
         justify-content: space-between;
@@ -144,32 +320,38 @@
 
     </div>
 
-    
+    <!-- You can duplicate more note cards here -->
 
   </div>
 
-<!-- NOTE 3 -->
-    <div class="note-row" style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 2rem;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.08);
-        transition: all 0.3s ease;
-        flex-wrap: wrap;
-    ">
 
-      <div style="max-width: 70%;">
-        <h3 style="margin-bottom: 0.4rem;">Mathematics for Astronomy Olympiads 1</h3>
-        <br>
-        <p style="font-size: 0.95rem; opacity: 0.85;">
-          The first in a series on the mathematical techniques every astronomy olympiad demands; here we build the foundation with dimensional analysis and unit conversions, the tools for sanity-checking equations and moving fluently between physical units.
+  <!-- ================= SERIES: MATHEMATICS FOR ASTRONOMY OLYMPIADS ================= -->
+  <div class="mas-series">
+
+    <div class="mas-head">
+      <div>
+        <span class="mas-label">Note Series</span>
+        <h2 class="mas-title">Mathematics for Astronomy Olympiads</h2>
+        <p class="mas-sub">
+          A sequential set of notes on the mathematical techniques every astronomy olympiad demands.
+          Each part builds on the one before it, so they are best read in order.
         </p>
       </div>
+      <span class="mas-count">3 Parts</span>
+    </div>
 
-      <a href="website_docs/Math_in_Astronomy_Olympiads-1.pdf" class="btn-read" target="_blank" style="
+    <div class="mas-body">
+
+      <!-- PART 1 -->
+      <div class="mas-note">
+        <div class="mas-part">01</div>
+        <h3>Mathematics for Astronomy Olympiads 1</h3>
+        <p>
+          <em>Dimensional Analysis &amp; Units</em>
+          The foundation of the series: dimensional analysis and unit conversions, the tools for sanity-checking equations and moving fluently between physical units.
+        </p>
+
+        <a href="website_docs/Math_in_Astronomy_Olympiads-1.pdf" class="btn-read" target="_blank" style="
     text-decoration: none;
     background-color: #4CAF50;
     color: #fff;
@@ -181,38 +363,59 @@
     Read Now →
     </a>
 
+      </div>
+
+      <!-- PART 2 -->
+      <div class="mas-note">
+        <div class="mas-part">02</div>
+        <h3>Mathematics for Astronomy Olympiads 2</h3>
+        <p>
+          <em>Numbers, Powers &amp; Logarithms</em>
+          Astronomy spans nearly sixty orders of magnitude, from the mass of the Sun to the mass of a hydrogen atom. Here we build scientific notation, the rules of exponents, and logarithms — the machinery behind quantities like the magnitude scale.
+        </p>
+
+        <a href="website_docs/Math_in_Astronomy_Olympiads-2.pdf" class="btn-read" target="_blank" style="
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-top: 10px;
+">
+    Read Now →
+    </a>
+
+      </div>
+
+      <!-- PART 3 -->
+      <div class="mas-note">
+        <div class="mas-part">03</div>
+        <h3>Mathematics for Astronomy Olympiads 3</h3>
+        <p>
+          <em>Geometry &amp; Trigonometry</em>
+          We can never lay a ruler against a star, so everything we know about celestial sizes and distances is deduced from angles. This part starts from what an angle is, introduces the units astronomers measure them in, and extends the trigonometric ratios beyond the right triangle.
+        </p>
+
+        <a href="website_docs/Math_in_Astronomy_Olympiads-3.pdf" class="btn-read" target="_blank" style="
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-top: 10px;
+">
+    Read Now →
+    </a>
+
+      </div>
+
     </div>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
+
 </section>
-
-
-
-
-
-
-
-
 
 
 </main>
@@ -221,40 +424,4 @@
 <footer>© 2026 Sheikh Hasin Abrar | All rights reserved</footer>
 <script src="script.js" defer></script>
 </body>
-</html
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</main>
-
+</html>
